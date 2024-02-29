@@ -11,4 +11,19 @@ const defense = document.getElementById("defense")
 const specialAttack = document.getElementById("special-attack")
 const specialDefense = document.getElementById("special-defense")
 const speed = document.getElementById("speed")
+let pokemonToSearch = ""
 
+searchButton.addEventListener("click", async () => {
+  pokemonToSearch = searchInput.value;
+  try {
+      const res = await fetch(`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${pokemonToSearch}`)
+      const data = await res.json();
+      console.log(data)
+      pokemonName.innerHTML +=
+      height.innerHTML += `${data.height}`
+  } catch {
+    console.log(err);
+  }
+    
+  
+})
