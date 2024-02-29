@@ -36,11 +36,11 @@ searchButton.addEventListener("click", async () => {
     );
     const data = await res.json();
     console.log(data);
-    pokemonName.innerHTML = `${data.name}`;
+    pokemonName.innerHTML = `${data.name.toUpperCase()}`;
     pokemonId.innerHTML = `${data.id}`;
     height.innerHTML = `${data.height}`;
     weight.innerHTML = `${data.weight}`;
-    types.innerHTML = `${data.types[0].type.name} ${data.types[1]?.type.name || ""}`;
+    types.innerHTML = `${data.types[0].type.name.toUpperCase()} ${data.types[1]?.type.name.toUpperCase() || ""}`;
     hp.innerHTML = `${data.stats[0].base_stat}`;
     attack.innerHTML = `${data.stats[1].base_stat}`;
     defense.innerHTML = `${data.stats[2].base_stat}`;
