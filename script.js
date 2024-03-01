@@ -4,8 +4,7 @@ const pokemonName = document.getElementById("pokemon-name");
 const pokemonId = document.getElementById("pokemon-id");
 const weight = document.getElementById("weight");
 const height = document.getElementById("height");
-const type1 = document.getElementById("type1");
-const type2 = document.getElementById("type2")
+const types = document.getElementById("types")
 const hp = document.getElementById("hp");
 const attack = document.getElementById("attack");
 const defense = document.getElementById("defense");
@@ -41,8 +40,6 @@ searchButton.addEventListener("click", async () => {
     pokemonId.innerHTML = `${data.id}`;
     height.innerHTML = `${data.height}`;
     weight.innerHTML = `${data.weight}`;
-    type1.innerHTML = `${data.types[0].type.name.toUpperCase()}`;
-    type2.innerHTML = `${data.types[1]?.type.name.toUpperCase() || ""}`
     hp.innerHTML = `${data.stats[0].base_stat}`;
     attack.innerHTML = `${data.stats[1].base_stat}`;
     defense.innerHTML = `${data.stats[2].base_stat}`;
@@ -52,6 +49,17 @@ searchButton.addEventListener("click", async () => {
 
     const image = document.getElementById("sprite");
     image.src = `${data.sprites.front_default}`
+
+    const newType = document.createElement("p")
+    const newContent = document.createTextNode(`${data.types[0].type.name.toUpperCase()}`);
+    newType.appendChild(newContent);
+    types.appendChild(newType)
+    if (data.types.length > 0) {
+      const newType2 = document.createElement("p")
+      const newContent2 = document.createTextNode(`${data.types[1].type.name.toUpperCase()}`);
+      newType2.appendChild(newContent2);
+      types.appendChild(newType2)
+    }
 
   } catch {
     alert("Pokémon not found");
